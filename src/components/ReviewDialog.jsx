@@ -36,7 +36,10 @@ const ReviewDialog = ({
     <dialog ref={dialog} onMouseDown={handleClick}>
       <form
         action={handleReviewFormSubmission}
-        onSubmit={() => {
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          await handleReviewFormSubmission(formData);
           handleClose();
         }}
       >
@@ -44,7 +47,10 @@ const ReviewDialog = ({
           <h3>Add your review</h3>
         </header>
         <article>
-          <RatingPicker />
+          <RatingPicker 
+            value={review.rating} 
+            onChange={(rating) => onChange(rating, "rating")} 
+          />
 
           <p>
             <input

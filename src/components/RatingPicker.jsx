@@ -2,7 +2,7 @@ import React from "react";
 
 // A HTML and CSS only rating picker thanks to: https://codepen.io/chris22smith/pen/MJzLJN
 
-const RatingPicker = () => {
+const RatingPicker = ({ value, onChange }) => {
   return (
     <p className="rating-picker">
       <input
@@ -11,6 +11,8 @@ const RatingPicker = () => {
         id="star5"
         name="rating"
         value="5"
+        checked={value === 5}
+        onChange={(e) => onChange(parseInt(e.target.value))}
       />
       <label className="radio-label" htmlFor="star5" title="5 stars">
         5 stars
@@ -22,6 +24,8 @@ const RatingPicker = () => {
         id="star4"
         name="rating"
         value="4"
+        checked={value === 4}
+        onChange={(e) => onChange(parseInt(e.target.value))}
       />
       <label className="radio-label" htmlFor="star4" title="4 stars">
         4 stars
@@ -33,6 +37,8 @@ const RatingPicker = () => {
         id="star3"
         name="rating"
         value="3"
+        checked={value === 3}
+        onChange={(e) => onChange(parseInt(e.target.value))}
       />
       <label className="radio-label" htmlFor="star3" title="3 stars">
         3 stars
@@ -44,6 +50,8 @@ const RatingPicker = () => {
         id="star2"
         name="rating"
         value="2"
+        checked={value === 2}
+        onChange={(e) => onChange(parseInt(e.target.value))}
       />
       <label className="radio-label" htmlFor="star2" title="2 stars">
         2 stars
@@ -55,6 +63,8 @@ const RatingPicker = () => {
         id="star1"
         name="rating"
         value="1"
+        checked={value === 1}
+        onChange={(e) => onChange(parseInt(e.target.value))}
       />
       <label className="radio-label" htmlFor="star1" title="1 star">
         1 star
