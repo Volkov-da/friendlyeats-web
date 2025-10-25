@@ -35,10 +35,13 @@ const ReviewDialog = ({
   return (
     <dialog ref={dialog} onMouseDown={handleClick}>
       <form
-        action={handleReviewFormSubmission}
-        onSubmit={async (e) => {
-          e.preventDefault();
-          const formData = new FormData(e.target);
+        action={async (formData) => {
+          console.log("Form submitted with data:", {
+            restaurantId: formData.get("restaurantId"),
+            text: formData.get("text"),
+            rating: formData.get("rating"),
+            userId: formData.get("userId")
+          });
           await handleReviewFormSubmission(formData);
           handleClose();
         }}
@@ -66,6 +69,7 @@ const ReviewDialog = ({
 
           <input type="hidden" name="restaurantId" value={id} />
           <input type="hidden" name="userId" value={userId} />
+          <input type="hidden" name="rating" value={review.rating} />
         </article>
         <footer>
           <menu>
